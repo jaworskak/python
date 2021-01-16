@@ -1,0 +1,11 @@
+pool
+running
+trekking
+trekking
+trekking
+bike
+fitness
+squash
+tennis
+walk
+gym
