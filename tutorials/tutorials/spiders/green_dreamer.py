@@ -15,20 +15,17 @@ class PostSpider(scrapy.Spider):
                 NGOname = h.xpath("./text()").extract()  # nazwa organizacji
                 NGOdescrpit = h.xpath('following-sibling::p[1]/text()').extract()  # opis organizacji
                 p = h.xpath('following-sibling::p[1]')
-                #NGOgetinvolved = h.xpath("//following-sibling::p[1][contains(.//text(), 'Get involved')]").extract()
                 NGOgetinvolved = h.xpath("following-sibling::p[strong[contains(.//text(), 'Get involved')]]").extract_first()
-                #print(NGOgetinvolved)
-                #print(NGOdescrpit)
-                #print()
 
                 if p.css('a') != []: #  nie chcemy fragmentu 'side note:'
                     NGOlink = p.css('a').attrib['href']  # adres organizacji
-                    yield {
-                        'Name': NGOname,
-                        'Description': NGOdescrpit,
-                        'Address': NGOlink,
-                        'GetInvolved': NGOgetinvolved
-                    }
+                    if NGOdescrpit:  # bez stopki
+                        yield {
+                            'Name': NGOname,
+                            'Description': NGOdescrpit,
+                            'Address': NGOlink,
+                            'GetInvolved': NGOgetinvolved
+                        }
 
 
 
