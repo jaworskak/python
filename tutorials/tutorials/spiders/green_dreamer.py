@@ -1,5 +1,4 @@
 import scrapy
-from scrapy.selector import Selector
 
 class PostSpider(scrapy.Spider):
     name = "ngo_posts"

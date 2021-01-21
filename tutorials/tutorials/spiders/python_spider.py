@@ -2,7 +2,7 @@ import scrapy
 
 
 class PostSpider(scrapy.Spider):  # klasa dziedzicząca po scrapy.Spider (nasza wersja)
-    name = "posts" #  nazwa klasy po ktorej bedziemy wywoływać scrapy crawl nazwa_crawlera 
+    name = "posts" #  nazwa klasy po ktorej bedziemy wywoływać scrapy crawl nazwa_crawlera
     start_urls = [
         'https://blog.scrapinghub.com/'  # początkowy link (lub lista linkow do przeszukania)
     ]
