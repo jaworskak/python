@@ -1,13 +1,13 @@
 import scrapy
 
 
-class PostSpider(scrapy.Spider):
-    name = "posts"
+class PostSpider(scrapy.Spider):  # klasa dziedzicząca po scrapy.Spider (nasza wersja)
+    name = "posts" #  nazwa klasy po ktorej bedziemy wywoływać scrapy crawl nazwa_crawlera 
     start_urls = [
-        'https://blog.scrapinghub.com/'  # przejscie przez wszystkie strony
+        'https://blog.scrapinghub.com/'  # początkowy link (lub lista linkow do przeszukania)
     ]
 
-    def parse(self, response):
+    def parse(self, response):  # response - zwracane dane
         for post in response.css('div.post-item'):
             yield {
                 'title': post.css('.post-header h2 a::text')[0].get(),
@@ -15,7 +15,6 @@ class PostSpider(scrapy.Spider):
                 'author': post.css('.post-header a::text')[2].get()
             }
         next_page = response.css('a.next-posts-link::attr(href)').get() #  przejscie 'dalej' element a o klasie next post link wyciagnieta wartosc atrybutu href
-        print(dir(next_page))
-        if next_page is not None:
+        if next_page is not None: #  jesli strona istnieje
             next_page = response.urljoin(next_page)  #  zamienia relatywne linki na absolutne
-            yield scrapy.Request(next_page, callback=self.parse)  #  yield (przypomniec sobie!!!)  callback=self.parse kolejne wywolanie parse
+            yield scrapy.Request(next_page, callback=self.parse) #  znowu wywolujemy to samo tylko na innej stronie
