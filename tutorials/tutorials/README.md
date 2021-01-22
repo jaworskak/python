@@ -1,9 +1,9 @@
-Instalacja scrapy:
+## Instalacja i obsluga scrapy:
 
-w konsoli pythona: pip install scrapy
+w konsoli pythona: `pip install scrapy`
 
-stworzenie nowego projektu: scrapy startproject tutorials
+stworzenie nowego projektu: `scrapy startproject tutorials`
 
-wywolanie scrapera: w konsoli scrapy crawl nazwa_z_klasy
+wywolanie scrapera: w konsoli `scrapy crawl nazwa_z_klasy`
 
-zapisanie do pliku: scrapy crawl -o nazwa.json
+zapisanie do pliku: `scrapy crawl -o nazwa.json`
