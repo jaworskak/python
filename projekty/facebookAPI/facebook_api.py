@@ -2,8 +2,9 @@
 #  wtedy mozna wygenerować sobie token
 #  potem sciagam https://facebook-sdk.readthedocs.io/en/latest/install.html czyli komenda: pip install -e git+https://github.com/mobolic/facebook-sdk.git#egg=facebook-sdk
 
-from  facebook import GraphAPI
+from facebook import GraphAPI
 import json
+
 
 def read_creds(filename):
     with open(filename) as f:
@@ -15,3 +16,6 @@ credentials = read_creds('credentials.json')
 
 graph = GraphAPI(access_token=credentials['access_token'])
 
+events = graph.request('/search?q=Poetry&type=event&limit=10000')
+
+print(events)
