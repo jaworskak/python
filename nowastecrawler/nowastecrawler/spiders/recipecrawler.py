@@ -23,7 +23,7 @@ class RecipeSpider(scrapy.Spider):
         step_list = []
         for step in steps:
             step_list.append(step.css('p::text').get())
-        # first recommended recipe
+        # first similar recipe
         next_url = response.css('div.recommended-wrapper')
         next_url_href = next_url.css('a ::attr(href)').get()
         yield{
@@ -35,9 +35,5 @@ class RecipeSpider(scrapy.Spider):
         if next_url_href is not None:  # jesli strona istnieje
             next_url_href = response.urljoin(next_url_href)  # zamienia relatywne linki na absolutne
             yield scrapy.Request(next_url_href, callback=self.parse,  dont_filter=True)  # znowu wywolujemy to samo tylko na innej stronie
-
-# output zmienic
-# duplikaty
-
 
 
