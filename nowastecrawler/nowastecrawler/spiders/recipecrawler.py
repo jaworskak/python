@@ -4,7 +4,7 @@ from scrapy.http.request import Request
 class RecipeSpider(scrapy.Spider):
     name = "recipes"
     start_urls = [
-        'https://www.przepisy.pl/skladniki/czekolada'
+        'https://www.przepisy.pl/skladniki/kasza'
     ]
 
     def parse(self, response):
@@ -45,4 +45,3 @@ class RecipeSpider(scrapy.Spider):
                 'steps': ' '.join(step_list),
                 'ingredients': ingredients_list
             }
-            
