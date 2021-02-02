@@ -52,9 +52,16 @@ first_three = x[:3]
 
 three_to_end = x[3:]
 
-one_to_four = x[1:5]
+one_to_four = x[1:5] # wycinki (slice) , X[I:J], oznacza: „zwróć wszystkie znaki
+# z ciągu X od przesunięcia I aż do przesunięcia J, ale bez tego ostatniego elementu”
+
+#  S[:-1] # Wszystkie elementy bez ostatniego, ale w łatwiejszej postaci(0:-1)
+
+#  S[1:] # Wszystko poza pierwszym znakiem (1:len(S))
 
 last_three = x[-3:]
+
+# nie mozna zmieniac zawartosci juz utworzonych list np S='Mielonka' potem s[0]='z' powinno byc S='z'+S[1:] 
 
 without_first_and_last = x[1:-1]
 
